@@ -19,3 +19,16 @@ function showData(dataArray) {
 }
 
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
+
+async function traerDatos(url) {
+  const respuesta = await fetch(url);
+
+  if(respuesta.ok) {
+    const resultado = await respuesta.json();
+    showData(resultado.students);
+  } else {
+    console.log(respuesta.status)
+  }
+}
+
+traerDatos(DATA_URL);
